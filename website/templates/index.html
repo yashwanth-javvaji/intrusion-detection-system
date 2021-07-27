@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block title %}
+IDS
+{% endblock %}
+{% block content %}
+<div class="valign-wrapper"
+    style="width: 100vw; height: calc(100% - 64px); background-image: url({{ url_for('static', filename='bg2.png') }}); background-position: center; background-size: cover; background-repeat: no-repeat;">
+    <div class="container valign-wrapper">
+        <div class="row">
+            <div class="col">
+                <div class="card horizontal">
+                    <div class="card-image">
+                        <img src="{{ url_for('static', filename='bg1.jpg') }}">
+                        <span class="card-title flow-text"><strong>Intrusion Detection System</strong></span>
+                        <a class="btn halfway-fab waves-effect waves-light amber darken-3"
+                            href="{{ url_for('views.predict') }}">Predict
+                            <i class="material-icons right">explore</i></a>
+                    </div>
+                    <div class="card-content valign-wrapper">
+                        <p>
+                            An Intrusion Detection System (IDS) is a system that monitors network traffic for suspicious
+                            activity and issues alerts when such activity is discovered. It is a software application
+                            that
+                            scans
+                            a network or a system for harmful activity or policy breaching.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+<div id="loginModal" class="modal modal-fixed-header">
+    <div class="modal-header">
+        <div class="row valign-wrapper">
+            <div class="col s9 valign-wrapper">
+                <h4>Login</h4>
+            </div>
+            <div class="col s3">
+                <a class="modal-close btn-floating btn waves-effect waves-light red right"><i class="material-icons">close</i></a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content">
+        <form class="col s12" method="POST" action="{{ url_for('auth.login') }}">
+            <div class="row input-field">
+                <input id="login_email" name="login_email" type="email" class="validate" required>
+                <label for="login_email">E-mail</label>
+            </div>
+            <div class="row input-field">
+                <input id="login_password" name="login_password" type="password" minlength="8" class="validate" required>
+                <label for="login_password">Password</label>
+            </div>
+            <div class="row input-field center-align">
+                <button class="btn waves-effect waves-light" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

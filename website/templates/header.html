@@ -1,0 +1,33 @@
+<div class="navbar-fixed">
+    <nav class="black">
+        <div class="nav-wrapper">
+            <a href="{{ url_for('views.index') }}" class="brand-logo">IDS</a>
+            <a href="#" data-target="sidenav" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+            <ul class="right hide-on-med-and-down">
+                {% if 'logged_in' in session %}
+                <li><a class="flow-text" href="{{ url_for('views.profile') }}">Hi, {{ session['user_name'] }}</a></li>
+                <li><a class="waves-effect waves-light btn indigo darken-4" href="{{ url_for('auth.logout') }}">Logout
+                        <i class="material-icons right">power_settings_new</i></a></li>
+                {% else %}
+                <li><a class="waves-effect waves-light btn indigo darken-4 modal-trigger" href="#loginModal">Login <i
+                            class="material-icons right">person</i></a></li>
+                <li><a class="waves-effect waves-light btn indigo darken-4 modal-trigger" href="#registerModal">Register
+                        <i class="material-icons right">person_add</i></a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<ul class="sidenav" id="sidenav">
+    {% if 'logged_in' in session %}
+    <li><a class="flow-text" href="{{ url_for('views.profile') }}">Hi, {{ session['user_name'] }}</a></li>
+    <li><a class="waves-effect waves-light btn indigo darken-4" href="{{ url_for('auth.logout') }}">Logout <i
+                class="material-icons right">power_settings_new</i></a></li>
+    {% else %}
+    <li><a class="waves-effect waves-light btn indigo darken-4 modal-trigger" href="#loginModal">Login <i
+                class="material-icons right">person</i></a></li>
+    <li><a class="waves-effect waves-light btn indigo darken-4 modal-trigger" href="#registerModal">Register <i
+                class="material-icons right">person_add</i></a></li>
+    {% endif %}
+</ul>

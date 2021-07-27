@@ -1,0 +1,161 @@
+{% extends "layout.html" %}
+{% block title %}
+IDS | Predict
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <h4>Enter the details</h4>
+    </div>
+    <div class="row">
+        <form class="col s12" method="POST" action="{{ url_for('views.predict') }}">
+            <div class="row input-field">
+                <input name="duration" type="number">
+                <label for="duration">duration</label>
+            </div>
+            <div class="row input-field">
+                <select name="protocol_type">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="0">ICMP</option>
+                    <option value="1">TCP</option>
+                    <option value="2">UDP</option>
+                </select>
+                <label for="protocol_type">protocol_type</label>
+            </div>
+            <div class="row input-field">
+                <select name="flag">
+                    <option value="" disabled selected>Choose your option</option>
+                    <option value="0">SF</option>
+                    <option value="1">S0</option>
+                    <option value="2">REJ</option>
+                    <option value="3">RSTR</option>
+                    <option value="4">RSTO</option>
+                    <option value="5">SH</option>
+                    <option value="6">S1</option>
+                    <option value="7">S2</option>
+                    <option value="8">RSTOS0</option>
+                    <option value="9">S3</option>
+                    <option value="10">OTH</option>
+                </select>
+                <label for="flag">flag</label>
+            </div>
+            <div class="row input-field">
+                <input name="src_bytes" type="number">
+                <label for="src_bytes">src_bytes</label>
+            </div>
+            <div class="row input-field">
+                <input name="dst_bytes" type="number">
+                <label for="dst_bytes">dst_bytes</label>
+            </div>
+            <div class="row input-field">
+                <input name="land" type="number">
+                <label for="land">land</label>
+            </div>
+            <div class="row input-field">
+                <input name="wrong_fragment" type="number">
+                <label for="wrong_fragment">wrong_fragment</label>
+            </div>
+            <div class="row input-field">
+                <input name="urgent" type="number">
+                <label for="urgent">urgent</label>
+            </div>
+            <div class="row input-field">
+                <input name="hot" type="number">
+                <label for="hot">hot</label>
+            </div>
+            <div class="row input-field" hidden>
+                <input name="num_failed_logins" type="number" value="{{ session.get('num_failed_logins', 0) }}" readonly>
+                <label for="num_failed_logins">num_failed_logins</label>
+            </div>
+            <div class="row input-field" hidden>
+                <input name="logged_in" type="number" value="{{ 1 if 'logged_in' in session else 0 }}" readonly>
+                <label for="logged_in">logged_in</label>
+            </div>
+            <div class="row input-field">
+                <input name="num_compromised" type="number">
+                <label for="num_compromised">num_compromised</label>
+            </div>
+            <div class="row input-field">
+                <input name="root_shell" type="number">
+                <label for="root_shell">root_shell</label>
+            </div>
+            <div class="row input-field">
+                <input name="su_attempted" type="number">
+                <label for="su_attempted">su_attempted</label>
+            </div>
+            <div class="row input-field">
+                <input name="num_file_creations" type="number">
+                <label for="num_file_creations">num_file_creations</label>
+            </div>
+            <div class="row input-field">
+                <input name="num_shells" type="number">
+                <label for="num_shells">num_shells</label>
+            </div>
+            <div class="row input-field">
+                <input name="num_access_files" type="number">
+                <label for="num_access_files">num_access_files</label>
+            </div>
+            <div class="row input-field">
+                <input name="is_guest_login" type="number">
+                <label for="is_guest_login">is_guest_login</label>
+            </div>
+            <div class="row input-field">
+                <input name="count" type="number">
+                <label for="count">count</label>
+            </div>
+            <div class="row input-field">
+                <input name="srv_count" type="number">
+                <label for="srv_count">srv_count</label>
+            </div>
+            <div class="row input-field">
+                <input name="serror_rate" type="number" step="any">
+                <label for="serror_rate">serror_rate</label>
+            </div>
+            <div class="row input-field">
+                <input name="rerror_rate" type="number" step="any">
+                <label for="rerror_rate">rerror_rate</label>
+            </div>
+            <div class="row input-field">
+                <input name="same_srv_rate" type="number" step="any">
+                <label for="same_srv_rate">same_srv_rate</label>
+            </div>
+            <div class="row input-field">
+                <input name="diff_srv_rate" type="number" step="any">
+                <label for="diff_srv_rate">diff_srv_rate</label>
+            </div>
+            <div class="row input-field">
+                <input name="srv_diff_host_rate" type="number" step="any">
+                <label for="srv_diff_host_rate">srv_diff_host_rate</label>
+            </div>
+            <div class="row input-field">
+                <input name="dst_host_count" type="number">
+                <label for="dst_host_count">dst_host_count</label>
+            </div>
+            <div class="row input-field">
+                <input name="dst_host_srv_count" type="number">
+                <label for="dst_host_srv_count">dst_host_srv_count</label>
+            </div>
+            <div class="row input-field">
+                <input name="dst_host_diff_srv_rate" type="number" step="any">
+                <label for="dst_host_diff_srv_rate">dst_host_diff_srv_rate</label>
+            </div>
+            <div class="row input-field">
+                <input name="dst_host_same_src_port_rate" type="number" step="any">
+                <label for="dst_host_same_src_port_rate">dst_host_same_src_port_rate</label>
+            </div>
+            <div class="row input-field">
+                <input name="dst_host_srv_diff_host_rate" type="number" step="any">
+                <label for="dst_host_srv_diff_host_rate">dst_host_srv_diff_host_rate</label>
+            </div>
+            <div class="row input-field center-align">
+                <button class="btn waves-effect waves-light" type="submit">Submit
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block js %}
+<script type="text/javascript" src="{{ url_for('static', filename='select.js') }}"></script>
+{% endblock %}

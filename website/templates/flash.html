@@ -1,0 +1,23 @@
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+{% for category, message in messages %}
+{% if category == 'error' %}
+<script type="text/javascript">
+    M.toast({
+        html: {{ message|tojson }},
+        displayLength: 5000,
+        classes: 'red'
+    });
+</script>
+{% else %}
+<script type="text/javascript">
+    M.toast({
+        html: {{ message|tojson }},
+        displayLength: 5000,
+        classes: 'green'
+    });
+</script>
+{% endif %}
+{% endfor %}
+{% endif %}
+{% endwith %}

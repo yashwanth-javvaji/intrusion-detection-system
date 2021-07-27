@@ -1,0 +1,89 @@
+{% extends "layout.html" %}
+{% block title %}
+IDS | Profile
+{% endblock %}
+{% block content %}
+<div class="container">
+    {% if user %}
+    <div class="row">
+        <div class="col s6">
+            <h4>Profile</h4>
+        </div>
+    </div>
+    <div class="row center">
+        <div class="col">
+            <div class="card indigo darken-4 center">
+                <div class="card-content white-text">
+                    <span class="card-title">{{ user.name }}</span>
+                    <p>{{ user.email }}</p>
+                </div>
+                <div class="card-action">
+                    <a href="#" class="amber-text text-darken-1" onclick="$('#editProfileModal').modal('open')" style="margin-left: 24px;">Edit</a>
+                    <a href="#" class="amber-text text-darken-1" onclick="$('#changePasswordModal').modal('open')">Change password</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% else %}
+        <h3>Profile not found</h3>
+    {% endif %}
+</div>
+<div id="editProfileModal" class="modal modal-fixed-header">
+    <div class="modal-header">
+        <div class="row valign-wrapper">
+            <div class="col s9 valign-wrapper">
+                <h4>Edit Profile</h4>
+            </div>
+            <div class="col s3">
+                <a class="modal-close btn-floating btn waves-effect waves-light red right"><i class="material-icons">close</i></a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content">
+        <form class="col s12" method="POST" action="{{ url_for('views.edit_profile') }}">
+            <div class="row input-field">
+                <input id="edit_name" name="edit_name" type="text" value="{{ user.name }}" class="validate" minlength="4" required>
+                <label for="edit_name">Name</label>
+            </div>
+            <div class="row input-field">
+                <input id="edit_email" name="edit_email" type="email" value="{{ user.email }}" class="validate" required>
+                <label for="edit_email">E-mail</label>
+            </div>
+            <div class="row input-field center-align">
+                <button class="btn waves-effect waves-light" type="submit">Update
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+<div id="changePasswordModal" class="modal modal-fixed-header">
+    <div class="modal-header">
+        <div class="row valign-wrapper">
+            <div class="col s9 valign-wrapper">
+                <h4>Change Password</h4>
+            </div>
+            <div class="col s3">
+                <a class="modal-close btn-floating btn waves-effect waves-light red right"><i class="material-icons">close</i></a>
+            </div>
+        </div>
+    </div>
+    <div class="modal-content">
+        <form class="col s12" method="POST" action="{{ url_for('views.change_password') }}">
+            <div class="row input-field">
+                <input id="old_password" name="old_password" type="password" minlength="8" class="validate" required>
+                <label for="old_password">Old Password</label>
+            </div>
+            <div class="row input-field">
+                <input id="new_password" name="new_password" type="password" minlength="8" class="validate" required>
+                <label for="new_password">New Password</label>
+            </div>
+            <div class="row input-field center-align">
+                <button class="btn waves-effect waves-light" type="submit">Update
+                    <i class="material-icons right">send</i>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

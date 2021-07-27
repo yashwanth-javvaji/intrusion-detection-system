@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}
+IDS | Result
+{% endblock %}
+{% block content %}
+<div class="container">
+    <div class="row valign-wrapper">
+        <div class="col s6">
+            <h4>Prediction result</h4>
+        </div>
+        <div class="col s6">
+            <a class="waves-effect waves-light btn indigo darken-4 right" href="{{ url_for('views.predict') }}">
+                <i class="material-icons left">arrow_left</i>
+                Go Back
+            </a>
+        </div>
+    </div>
+    <table class="striped">
+        <thead>
+            <tr>
+                <th>Model Name</th>
+                <th>Attack Type</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for k, v in message.items() %}
+            <tr>
+                <td>{{ k }}</td>
+                <td>{{ v }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
