@@ -10,14 +10,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Installing
 - Clone the repository
-
-   ```git clone https://github.com/<username>/network-intrusion-detection.git```
+<br />```git clone https://github.com/<username>/network-intrusion-detection.git```
 - Install the required libraries
-
-   ```pip install -r requirements.txt```
+<br />```pip install -r requirements.txt```
 - Run the app
-
-   ```python app.py```
+<br />```python app.py```
 
 ## Built With
 - [Python](https://www.python.org/) - Programming Language
